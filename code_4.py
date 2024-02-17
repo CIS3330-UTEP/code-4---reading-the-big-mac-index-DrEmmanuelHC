@@ -1,3 +1,4 @@
+
 import pandas as pd
 
 big_mac_file = './big-mac-full-index.csv'
@@ -19,14 +20,14 @@ def get_big_mac_price_by_country(country_code):
 def get_the_cheapest_big_mac_price_by_year(year):
     cheapest = df[df['date'].str.startswith(str(year))]['dollar_price'].idxmin()
     cheapest_mac = df.iloc[cheapest]
-    return f"{cheapest_mac['name']}({cheapest_mac['iso_a3']}): ${cheapest_mac['dollar_price']}"
+    return f"{cheapest_mac['name']}({cheapest_mac['iso_a3']}): ${round(cheapest_mac['dollar_price'], 2)}"
 
 def get_the_most_expensive_big_mac_price_by_year(year):
     expensive = df[df['date'].str.startswith(str(year))]['dollar_price'].idxmax()
     expensive_mac = df.iloc[expensive]
-    return f"{expensive_mac['name']}({expensive_mac['iso_a3']}): ${expensive_mac['dollar_price']}"
+    return f"{expensive_mac['name']}({expensive_mac['iso_a3']}): ${round(expensive_mac['dollar_price'], 2) }"
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     while True:
         print("\n1. Get Big Mac price by year and country code")
         print("2. Get Big Mac price by country code")
