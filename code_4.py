@@ -27,7 +27,7 @@ def get_the_most_expensive_big_mac_price_by_year(year):
     expensive_mac = df.iloc[expensive]
     return f"{expensive_mac['name']}({expensive_mac['iso_a3']}): ${round(expensive_mac['dollar_price'], 2) }"
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     while True:
         print("\n1. Get Big Mac price by year and country code")
         print("2. Get Big Mac price by country code")
