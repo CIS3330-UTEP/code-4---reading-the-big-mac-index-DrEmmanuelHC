@@ -8,7 +8,7 @@ def get_big_mac_price_by_year(year, country_code):
     query = f"date.str.startswith('{year}') and iso_a3 == '{country_code}'"
     result = df.query(query)
     if result.empty:
-        return None  # Return None if no data is found
+        return None  
     mean_price = result['dollar_price'].mean()
     return round(mean_price, 2)
 
@@ -16,14 +16,14 @@ def get_big_mac_price_by_country(country_code):
     query = f"iso_a3 == '{country_code}'"
     result = df.query(query)
     if result.empty:
-        return None  # Return None if no data is found
+        return None 
     mean_price = result['dollar_price'].mean()
     return round(mean_price, 2)
 
 def get_the_cheapest_big_mac_price_by_year(year):
     result = df[df['date'].str.startswith(str(year))]
     if result.empty:
-        return None  # Return None if no data is found
+        return None  
     cheapest = result['dollar_price'].idxmin()
     cheapest_mac = df.iloc[cheapest]
     return f"{cheapest_mac['name']}({cheapest_mac['iso_a3']}): ${round(cheapest_mac['dollar_price'], 2)}"
@@ -31,7 +31,7 @@ def get_the_cheapest_big_mac_price_by_year(year):
 def get_the_most_expensive_big_mac_price_by_year(year):
     result = df[df['date'].str.startswith(str(year))]
     if result.empty:
-        return None  # Return None if no data is found
+        return None  
     expensive = result['dollar_price'].idxmax()
     expensive_mac = df.iloc[expensive]
     return f"{expensive_mac['name']}({expensive_mac['iso_a3']}): ${round(expensive_mac['dollar_price'], 2) }"
